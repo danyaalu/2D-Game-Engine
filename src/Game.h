@@ -4,6 +4,8 @@
 #include <SDL_image.h>
 
 #include <iostream>
+#include <memory>
+#include <vector>
 
 class Game {
 public:
@@ -20,13 +22,13 @@ public:
 
 	bool running() { return isRunning; }
 
+	static SDL_Renderer* renderer;
+
 private:
 	SDL_Window* window;
-	SDL_Renderer* renderer;
 
 	int count;
 	bool isRunning;
 	const int FPS = 60;
 	const int frameDelay = 1000 / FPS;
 };
-

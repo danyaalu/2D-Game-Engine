@@ -1,8 +1,13 @@
 #include "Game.h"
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Map.h"
 
-SDL_Texture* playerTex;
-SDL_Rect srcR, destR;
+GameObject* player;
+GameObject* enemy;
+Map* map;
+
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game() {}
 
@@ -48,8 +53,11 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ---------------------------------------------------------------------------------------------------------
 
-	// Loading textures
-	playerTex = TextureManager::LoadTexture("assets/player.png", renderer);
+	// Create a player object using unique_ptr
+	player = new GameObject("assets/player.png", 0, 0);
+	enemy = new GameObject("assets/enemy.png", 32, 32);
+	map = new Map();
+
 }
 
 void Game::HandleEvents() {
@@ -71,12 +79,8 @@ void Game::HandleEvents() {
 
 void Game::Update() {
 	// Update game state
-	count++;
-	destR.h = 64;
-	destR.w = 64;
-	destR.x = count;
-
-	std::cout << count << std::endl;
+	player->Update();
+	enemy->Update();
 }
 
 void Game::Render() {
@@ -84,7 +88,9 @@ void Game::Render() {
 	SDL_RenderClear(renderer);
 
 	// This is where we add stuff to render
-	SDL_RenderCopy(renderer, playerTex, NULL, &destR); // First null renders entire image, second null draw the whole render frame
+	map->DrawMap();
+	player->Render();
+	enemy->Render();
 
 	SDL_RenderPresent(renderer);
 }
