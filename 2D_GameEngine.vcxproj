@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ECS.cpp" />
     <ClCompile Include="src\Map.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -146,6 +147,8 @@
     <ClCompile Include="src\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Components.h" />
+    <ClInclude Include="src\ECS.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Game.h" />
