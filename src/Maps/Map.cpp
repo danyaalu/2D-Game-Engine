@@ -1,5 +1,5 @@
 #include "Map.h"
-#include "TextureManager.h"
+#include "../Managers/TextureManager.h"
 
 int lvl1[20][25] = {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
@@ -26,9 +26,9 @@ int lvl1[20][25] = {
 
 
 Map::Map() {
-	dirt = TextureManager::LoadTexture("assets/dirt.png");
-	grass = TextureManager::LoadTexture("assets/grass.png");
-	water = TextureManager::LoadTexture("assets/water.png");
+	dirt = TextureManager::LoadTexture("assets/images/dirt.png");
+	grass = TextureManager::LoadTexture("assets/images/grass.png");
+	water = TextureManager::LoadTexture("assets/images/water.png");
 
 	LoadMap(lvl1);
 
@@ -40,7 +40,9 @@ Map::Map() {
 }
 
 Map::~Map() {
-
+	SDL_DestroyTexture(water);
+	SDL_DestroyTexture(grass);
+	SDL_DestroyTexture(dirt);
 }
 
 void Map::LoadMap(int arr[20][25]) {

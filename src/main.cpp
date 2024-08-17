@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Game.h"
+#include "Core/Game.h"
 
 Game* game = nullptr;
 

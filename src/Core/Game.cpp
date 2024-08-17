@@ -1,9 +1,9 @@
 #include "Game.h"
-#include "TextureManager.h"
-#include "Map.h"
+#include "../Managers/TextureManager.h"
+#include "../Maps/Map.h"
 
-#include "ECS/ECS.h"
-#include "ECS/Components.h"
+#include "ECS.h"
+#include "../Components/Components.h"
 
 Map* map;
 
@@ -61,7 +61,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	// ECS Implementation
 
 	player.addComponent<TransformComponent>(); // To set position, add x and y parameters
-	player.addComponent<SpriteComponent>("assets/Player.png");
+	player.addComponent<SpriteComponent>("assets/images/Player.png");
 	player.addComponent<KeyboardComponent>();
 
 }
@@ -87,7 +87,7 @@ void Game::Update() {
 
 	// Changes the entity texture if x > 100 to the enemy texture
 	if (player.getComponent<TransformComponent>().position.x > 100) {
-		player.getComponent<SpriteComponent>().setTexture("assets/Enemy.png");
+		player.getComponent<SpriteComponent>().setTexture("assets/images/Enemy.png");
 	}
 }
 

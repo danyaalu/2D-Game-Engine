@@ -1,6 +1,6 @@
 #pragma once
 #include "Components.h"
-#include "../Vector2D.h"
+#include "../Utilities/Vector2D.h"
 
 /*
 	TransformComponent is a struct because it has no private members
@@ -10,6 +10,9 @@ struct TransformComponent : public Component {
 public:
 	Vector2D position;
 	Vector2D velocity;
+
+	int height, width = 32;
+	int scale = 1;
 
 	int speed = 3;
 

@@ -1,6 +1,5 @@
 #pragma once
-#include "../Game.h"
-#include "ECS.h"
+#include "../Core/Game.h"
 #include "Components.h"
 
 class KeyboardComponent : public Component {
@@ -48,6 +47,4 @@ public:
 			}
 		}
 	}
-
 };
-

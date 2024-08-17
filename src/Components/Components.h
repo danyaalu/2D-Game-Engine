@@ -1,6 +1,6 @@
 #pragma once
-#include "ECS.h"
-#include "../TextureManager.h"
+#include "../Core/ECS.h"
+#include "../Managers/TextureManager.h"
 
 #include "Components.h"
 #include "TransformComponent.h"

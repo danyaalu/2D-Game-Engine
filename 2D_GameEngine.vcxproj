@@ -139,31 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ECS\ECS.cpp" />
-    <ClCompile Include="src\Map.cpp" />
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Core\ECS.cpp" />
+    <ClCompile Include="src\Core\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\TextureManager.cpp" />
-    <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\Managers\TextureManager.cpp" />
+    <ClCompile Include="src\Maps\Map.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ECS\ColliderComponent.h" />
-    <ClInclude Include="src\ECS\Components.h" />
-    <ClInclude Include="src\ECS\ECS.h" />
-    <ClInclude Include="src\ECS\KeyboardComponent.h" />
-    <ClInclude Include="src\ECS\TransformComponent.h" />
-    <ClInclude Include="src\ECS\SpriteComponent.h" />
-    <ClInclude Include="src\Map.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\TextureManager.h" />
-    <ClInclude Include="src\Vector2D.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\Dirt.png" />
-    <Image Include="assets\Enemy.png" />
-    <Image Include="assets\Grass.png" />
-    <Image Include="assets\Player.png" />
-    <Image Include="assets\Water.png" />
+    <ClInclude Include="src\Components\ColliderComponent.h" />
+    <ClInclude Include="src\Components\Components.h" />
+    <ClInclude Include="src\Components\KeyboardComponent.h" />
+    <ClInclude Include="src\Components\SpriteComponent.h" />
+    <ClInclude Include="src\Components\TransformComponent.h" />
+    <ClInclude Include="src\Core\ECS.h" />
+    <ClInclude Include="src\Core\Game.h" />
+    <ClInclude Include="src\Managers\TextureManager.h" />
+    <ClInclude Include="src\Maps\Map.h" />
+    <ClInclude Include="src\Utilities\Vector2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
