@@ -8,7 +8,6 @@ void Entity::Update() {
 
 void Entity::Draw() {
 	for (auto& c : components) c->Draw();
-	std::cout << "Entity drawn" << std::endl;
 }
 
 // ------------------------------------------------------------------------------------------

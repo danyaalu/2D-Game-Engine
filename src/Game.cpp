@@ -8,7 +8,7 @@
 Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
-
+SDL_Event Game::event;
 EntityManager manager;
 auto& player(manager.AddEntity());
 
@@ -62,13 +62,11 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player.addComponent<TransformComponent>(); // To set position, add x and y parameters
 	player.addComponent<SpriteComponent>("assets/Player.png");
+	player.addComponent<KeyboardComponent>();
 
 }
 
 void Game::HandleEvents() {
-	// Create SDL event
-	SDL_Event event;
-
 	// Poll for currently pending events
 	SDL_PollEvent(&event);
 
@@ -86,8 +84,6 @@ void Game::Update() {
 	// Update game state
 	manager.Refresh();
 	manager.Update();
-
-	player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0)); // Move the player to the right
 
 	// Changes the entity texture if x > 100 to the enemy texture
 	if (player.getComponent<TransformComponent>().position.x > 100) {
@@ -110,7 +106,9 @@ void Game::Render() {
 void Game::Clean() {
 	// Clean up resources
 	SDL_DestroyWindow(window);
+	std::cout << "Destroyed SDL window" << std::endl;
 	SDL_DestroyRenderer(renderer);
+	std::cout << "Destroyed SDL renderer" << std::endl;
 	SDL_Quit();
 
 	std::cout << "Game cleaned" << std::endl;
