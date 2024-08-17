@@ -17,7 +17,7 @@ using ComponentID = std::size_t;
 
 // Function to generate unique component IDs
 inline ComponentID getComponentTypeID() {
-	// Static varibale to keep track of the last assigned ID
+	// Static variable to keep track of the last assigned ID
 	static ComponentID lastID = 0;
 	// Return the current ID and increment it for the next call
 	return lastID++;
@@ -44,7 +44,7 @@ using ComponentArray = std::array<Component*, maxComponents>;
 
 class Component {
 public:
-	Entity* entity;
+	Entity* entity = nullptr; // Initialize to nullptr
 
 	virtual void Init() {}
 	virtual void Update() {}
@@ -64,7 +64,7 @@ public:
 	// Template function to check if the entity has a specific component type
 	template<typename T> bool hasComponent() const {
 		// Check if the bit corresponding to the component type ID is set
-		return ComponentBitset[getComponentTypeID<T>()];
+		return componentBitset[getComponentTypeID<T>()];
 	}
 
 	// Template function to add a component to the entity
@@ -83,7 +83,7 @@ public:
 		componentArray[getComponentTypeID<T>()] = c;
 		componentBitset[getComponentTypeID<T>()] = true;
 
-		// Call initialiser function
+		// Call initializer function
 		c->Init();
 
 		// Return a reference to the newly added component
@@ -97,7 +97,6 @@ public:
 		// Cast the pointer to the correct component type and return a reference to it
 		return *static_cast<T*>(ptr);
 	}
-
 
 private:
 	bool active = true;
@@ -117,5 +116,5 @@ public:
 
 private:
 	std::vector<std::unique_ptr<Entity>> entities;
-
 };
+

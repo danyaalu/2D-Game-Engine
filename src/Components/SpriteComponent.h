@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Components.h"
-
+#include "../Managers/TextureManager.h"
 #include "SDL.h"
 
 class SpriteComponent : public Component {
@@ -15,6 +15,9 @@ public:
 	}
 
 	void Init() override {
+		if (!entity->hasComponent<TransformComponent>()) {
+			entity->addComponent<TransformComponent>();
+		}
 		transform = &entity->getComponent<TransformComponent>();
 
 		srcRect.x = srcRect.y = 0; // Set x and y position

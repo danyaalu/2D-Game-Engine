@@ -6,7 +6,9 @@ class KeyboardComponent : public Component {
 public:
 	TransformComponent* transform;
 
-	void Init() override { transform = &entity->getComponent<TransformComponent>(); }
+	void Init() override {
+		transform = &entity->getComponent<TransformComponent>();
+	}
 
 	void Update() override {
 		if (Game::event.type == SDL_KEYDOWN) {

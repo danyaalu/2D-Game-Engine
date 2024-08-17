@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "../Managers/TextureManager.h"
 #include "../Maps/Map.h"
-
+#include "../Utilities/Collision.h"
 #include "ECS.h"
 #include "../Components/Components.h"
 
@@ -10,7 +10,9 @@ Map* map;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 EntityManager manager;
+
 auto& player(manager.AddEntity());
+auto& wall(manager.AddEntity());
 
 Game::Game() {}
 
@@ -60,10 +62,14 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ECS Implementation
 
-	player.addComponent<TransformComponent>(); // To set position, add x and y parameters
-	player.addComponent<SpriteComponent>("assets/images/Player.png");
+	player.addComponent<TransformComponent>(2); // To set position, add x and y parameters
+	player.addComponent<SpriteComponent>("assets/images/Dirt.png");
 	player.addComponent<KeyboardComponent>();
+	player.addComponent<ColliderComponent>("player");
 
+	wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+	wall.addComponent<SpriteComponent>("assets/images/Dirt.png");
+	wall.addComponent<ColliderComponent>("wall");
 }
 
 void Game::HandleEvents() {
@@ -85,9 +91,8 @@ void Game::Update() {
 	manager.Refresh();
 	manager.Update();
 
-	// Changes the entity texture if x > 100 to the enemy texture
-	if (player.getComponent<TransformComponent>().position.x > 100) {
-		player.getComponent<SpriteComponent>().setTexture("assets/images/Enemy.png");
+	if (Collision::AABB(player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider)) {
+		std::cout << "Wall Hit!" << std::endl;
 	}
 }
 

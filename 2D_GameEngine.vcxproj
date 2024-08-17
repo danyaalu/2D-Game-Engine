@@ -155,7 +155,15 @@
     <ClInclude Include="src\Core\Game.h" />
     <ClInclude Include="src\Managers\TextureManager.h" />
     <ClInclude Include="src\Maps\Map.h" />
+    <ClInclude Include="src\Utilities\Collision.h" />
     <ClInclude Include="src\Utilities\Vector2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\Dirt.png" />
+    <Image Include="assets\images\Enemy.png" />
+    <Image Include="assets\images\Grass.png" />
+    <Image Include="assets\images\Player.png" />
+    <Image Include="assets\images\Water.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
