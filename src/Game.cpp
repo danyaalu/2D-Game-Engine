@@ -60,7 +60,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ECS Implementation
 
-	player.addComponent<PositionComponent>(); // To set position, add x and y parameters
+	player.addComponent<TransformComponent>(); // To set position, add x and y parameters
 	player.addComponent<SpriteComponent>("assets/Player.png");
 
 }
@@ -88,7 +88,7 @@ void Game::Update() {
 	manager.Update();
 
 	// Changes the entity texture if x > 100 to the enemy texture
-	/*if (player.getComponent<PositionComponent>().x() > 100) {
+	/*if (player.getComponent<TransformComponent>().x() > 100) {
 		player.getComponent<SpriteComponent>().setTexture("assets/Enemy.png");
 	}*/
 }

@@ -12,7 +12,7 @@ public:
 	}
 
 	void Init() override {
-		position = &entity->getComponent<PositionComponent>();
+		position = &entity->getComponent<TransformComponent>();
 
 		srcRect.x = srcRect.y = 0; // Set x and y position
 		srcRect.w = srcRect.h = 32; // Set image size to 32x32
@@ -33,7 +33,7 @@ public:
 	}
 
 private:
-	PositionComponent* position;
+	TransformComponent* position;
 	SDL_Texture* texture;
 	SDL_Rect srcRect, destRect;
 };

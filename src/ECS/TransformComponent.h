@@ -1,15 +1,15 @@
 #pragma once
 #include "Components.h"
 
-class PositionComponent : public Component {
+class TransformComponent : public Component {
 private:
 	int xpos;
 	int ypos;
 
 public:
 
-	PositionComponent() { xpos = 0; ypos = 0; } // Default constructor
-	PositionComponent(int x, int y) { xpos = x; ypos = y; } // Constructor if position is set
+	TransformComponent() { xpos = 0; ypos = 0; } // Default constructor
+	TransformComponent(int x, int y) { xpos = x; ypos = y; } // Constructor if position is set
 
 	void Update() override {
 		xpos++;

@@ -3,5 +3,5 @@
 #include "../TextureManager.h"
 
 #include "Components.h"
-#include "PositionComponent.h"
+#include "TransformComponent.h"
 #include "SpriteComponent.h"
