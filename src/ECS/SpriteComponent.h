@@ -12,7 +12,7 @@ public:
 	}
 
 	void Init() override {
-		position = &entity->getComponent<TransformComponent>();
+		transform = &entity->getComponent<TransformComponent>();
 
 		srcRect.x = srcRect.y = 0; // Set x and y position
 		srcRect.w = srcRect.h = 32; // Set image size to 32x32
@@ -24,8 +24,8 @@ public:
 	}
 
 	void Update() override {
-		destRect.x = position->x();
-		destRect.y = position->y();
+		destRect.x = (int)transform->position.x;
+		destRect.y = (int)transform->position.y;
 	}
 
 	void Draw() override {
@@ -33,7 +33,7 @@ public:
 	}
 
 private:
-	TransformComponent* position;
+	TransformComponent* transform;
 	SDL_Texture* texture;
 	SDL_Rect srcRect, destRect;
 };

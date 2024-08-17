@@ -87,10 +87,12 @@ void Game::Update() {
 	manager.Refresh();
 	manager.Update();
 
+	player.getComponent<TransformComponent>().position.Add(Vector2D(5, 0)); // Move the player to the right
+
 	// Changes the entity texture if x > 100 to the enemy texture
-	/*if (player.getComponent<TransformComponent>().x() > 100) {
+	if (player.getComponent<TransformComponent>().position.x > 100) {
 		player.getComponent<SpriteComponent>().setTexture("assets/Enemy.png");
-	}*/
+	}
 }
 
 void Game::Render() {

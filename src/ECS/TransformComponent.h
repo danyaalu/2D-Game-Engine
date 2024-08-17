@@ -1,27 +1,19 @@
 #pragma once
 #include "Components.h"
+#include "../Vector2D.h"
 
-class TransformComponent : public Component {
-private:
-	int xpos;
-	int ypos;
+/*
+	TransformComponent is a struct because it has no private members
+*/
 
+struct TransformComponent : public Component {
 public:
+	Vector2D position;
 
-	TransformComponent() { xpos = 0; ypos = 0; } // Default constructor
-	TransformComponent(int x, int y) { xpos = x; ypos = y; } // Constructor if position is set
+	TransformComponent() { position.x = position.y = 0; } // Default constructor
+	TransformComponent(float x, float y) { position.x = x; position.y = y; } // Constructor if position is set
 
 	void Update() override {
-		xpos++;
-		ypos++;
+
 	}
-
-	// Functions for getting position
-	int x() const { return xpos; }
-	int y() const { return ypos; }
-
-	// Functions for setting position
-	void x(int x) { xpos = x; }
-	void y(int y) { ypos = y; }
-	void setPos(int x, int y) { xpos = x; ypos = y; }
 };
