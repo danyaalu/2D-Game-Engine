@@ -1,19 +1,16 @@
 #include "Game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Map.h"
 
-#include "ECS.h"
-#include "Components.h"
+#include "ECS/ECS.h"
+#include "ECS/Components.h"
 
-GameObject* player;
-GameObject* enemy;
 Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
 EntityManager manager;
-auto& newPlayer(manager.AddEntity());
+auto& player(manager.AddEntity());
 
 Game::Game() {}
 
@@ -59,13 +56,13 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ---------------------------------------------------------------------------------------------------------
 
-	// Create a player object using unique_ptr
-	player = new GameObject("assets/player.png", 0, 0);
-	enemy = new GameObject("assets/enemy.png", 32, 32);
 	map = new Map();
 
-	newPlayer.addComponent<PositionComponent>();
-	newPlayer.getComponent<PositionComponent>().setPos(500, 500);
+	// ECS Implementation
+
+	player.addComponent<PositionComponent>(); // To set position, add x and y parameters
+	player.addComponent<SpriteComponent>("assets/Player.png");
+
 }
 
 void Game::HandleEvents() {
@@ -87,12 +84,13 @@ void Game::HandleEvents() {
 
 void Game::Update() {
 	// Update game state
-	player->Update();
-	enemy->Update();
-
+	manager.Refresh();
 	manager.Update();
-	std::cout << newPlayer.getComponent<PositionComponent>().x() << "," <<
-		newPlayer.getComponent<PositionComponent>().y() << std::endl;
+
+	// Changes the entity texture if x > 100 to the enemy texture
+	/*if (player.getComponent<PositionComponent>().x() > 100) {
+		player.getComponent<SpriteComponent>().setTexture("assets/Enemy.png");
+	}*/
 }
 
 void Game::Render() {
@@ -101,8 +99,8 @@ void Game::Render() {
 
 	// This is where we add stuff to render
 	map->DrawMap();
-	player->Render();
-	enemy->Render();
+
+	manager.Draw();
 
 	SDL_RenderPresent(renderer);
 }

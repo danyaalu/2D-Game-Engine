@@ -1,30 +1,14 @@
 #include "ECS.h"
 
-Component::~Component() {
-
-}
-
-void Component::Init() {
-
-}
-
-void Component::Update() {
-
-}
-
-void Component::Draw() {
-
-}
-
 // ------------------------------------------------------------------------------------------
 
 void Entity::Update() {
 	for (auto& c : components) c->Update();
-	for (auto& c : components) c->Draw();
 }
 
 void Entity::Draw() {
-
+	for (auto& c : components) c->Draw();
+	std::cout << "Entity drawn" << std::endl;
 }
 
 // ------------------------------------------------------------------------------------------

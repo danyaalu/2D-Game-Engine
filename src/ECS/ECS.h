@@ -46,11 +46,11 @@ class Component {
 public:
 	Entity* entity;
 
-	virtual void Init();
-	virtual void Update();
-	virtual void Draw();
+	virtual void Init() {}
+	virtual void Update() {}
+	virtual void Draw() {}
 
-	virtual ~Component();
+	virtual ~Component() {}
 };
 
 class Entity {
