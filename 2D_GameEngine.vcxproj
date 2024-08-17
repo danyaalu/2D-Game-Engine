@@ -155,8 +155,11 @@
     <ClInclude Include="src\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\Dirt.png" />
     <Image Include="assets\Enemy.png" />
+    <Image Include="assets\Grass.png" />
     <Image Include="assets\Player.png" />
+    <Image Include="assets\Water.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -61,5 +61,14 @@
     <Image Include="assets\Enemy.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\Water.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Dirt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
