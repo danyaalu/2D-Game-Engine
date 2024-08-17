@@ -7,3 +7,4 @@
 #include "SpriteComponent.h"
 #include "KeyboardComponent.h"
 #include "ColliderComponent.h"
+#include "TileComponent.h"

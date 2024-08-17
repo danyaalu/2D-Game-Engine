@@ -11,8 +11,14 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 EntityManager manager;
 
+std::vector<ColliderComponent*> Game::colliders;
+
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
+
+auto& tile0(manager.AddEntity());
+auto& tile1(manager.AddEntity());
+auto& tile2(manager.AddEntity());
 
 Game::Game() {}
 
@@ -62,6 +68,14 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// ECS Implementation
 
+	tile0.addComponent<TileComponent>(200, 200, 32, 32, 1);
+
+	tile1.addComponent<TileComponent>(250, 250, 32, 32, 0);
+	tile1.addComponent<ColliderComponent>("water");
+
+	tile2.addComponent<TileComponent>(150, 150, 32, 32, 2);
+	tile2.addComponent<ColliderComponent>("grass");
+
 	player.addComponent<TransformComponent>(2); // To set position, add x and y parameters
 	player.addComponent<SpriteComponent>("assets/images/Dirt.png");
 	player.addComponent<KeyboardComponent>();
@@ -91,8 +105,9 @@ void Game::Update() {
 	manager.Refresh();
 	manager.Update();
 
-	if (Collision::AABB(player.getComponent<ColliderComponent>().collider, wall.getComponent<ColliderComponent>().collider)) {
-		std::cout << "Wall Hit!" << std::endl;
+	// Loop through all colliders and check for collisions
+	for (auto cc : colliders) {
+		Collision::AABB(player.getComponent<ColliderComponent>(), *cc);
 	}
 }
 
@@ -101,7 +116,7 @@ void Game::Render() {
 	SDL_RenderClear(renderer);
 
 	// This is where we add stuff to render
-	map->DrawMap();
+	//map->DrawMap();
 
 	manager.Draw();
 

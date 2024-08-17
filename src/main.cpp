@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "Core/Game.h"
 
 Game* game = nullptr;

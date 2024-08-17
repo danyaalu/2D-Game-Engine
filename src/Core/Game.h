@@ -7,6 +7,8 @@
 #include <memory>
 #include <vector>
 
+class ColliderComponent;
+
 class Game {
 public:
 	Game();
@@ -24,6 +26,8 @@ public:
 
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
+	static std::vector<ColliderComponent*> colliders;
+
 private:
 	SDL_Window* window;
 

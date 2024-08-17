@@ -150,6 +150,7 @@
     <ClInclude Include="src\Components\Components.h" />
     <ClInclude Include="src\Components\KeyboardComponent.h" />
     <ClInclude Include="src\Components\SpriteComponent.h" />
+    <ClInclude Include="src\Components\TileComponent.h" />
     <ClInclude Include="src\Components\TransformComponent.h" />
     <ClInclude Include="src\Core\ECS.h" />
     <ClInclude Include="src\Core\Game.h" />
